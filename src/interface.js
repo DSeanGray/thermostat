@@ -1,7 +1,14 @@
 $(document).ready(function() {
+
   var thermostat = new Thermostat();
+  showWeather('London');
   updateTemperature();
   $('#psm_mode').text('On').css('color', 'green');
+
+  $('#current-city').change(function() {
+    var city = $('#current-city').val();
+    showWeather(city);
+  });
 
 $('#temp_up').click(function() {
   thermostat.up();
@@ -42,18 +49,10 @@ function updateTemperature(){
     $('#temperature').css('color','red');
   }
 }
-// jQuery toggle plugin for slider
-// jQuery.fn.clickToggle = function(a,b) {
-//   var ab = [b,a];
-//   return this.on("click", function(){ ab[this._tog^=1].call(this); });
-// };
-//
-// $('#psm_toggle').clickToggle(function(){
-//   thermostat.powerSavingModeOn();
-//   updateTemperature();
-// }, function() {
-//   thermostat.powerSavingModeOff();
-//   updateTemperature();
-// });
+function showWeather(city) {
+  $.get('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=a3d9eb01d4de82b9b8d0849ef604dbed&units=metric', function(data) {
+    $('#current-temperature').text(data.main.temp)
+  })
+}
 
 });

@@ -50,7 +50,7 @@ Thermostat.prototype.powerSavingModeOn = function() {
 };
 
 Thermostat.prototype.resetTemperature = function() {
-  this.temperature = 20
+  this.temperature = 20;
 };
 
 Thermostat.prototype.energyUse = function() {

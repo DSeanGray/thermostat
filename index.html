@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title>Thermostat</title>
     <meta charset="utf-8">
+    <script src="./src/snowstorm.js"></script>
+    <script type="text/javascript" src="snowstorm.js"></script>
     <script type="text/javascript" src="./src/thermostat.js"></script>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="./src/interface.js"></script>
@@ -16,9 +19,13 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-    <title>Thermostat</title>
+<style type="text/css">
+   body { background: #99ccff !important; } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
+</style>
+
+
   </head>
-  <body>
+  <center><body id="body">
     <h1>Thermostat: <span id="temperature"></span>&deg;C</h1>
     <h1>Power Saving: <span id="psm_mode"></span></h1>
     <br>
@@ -35,10 +42,20 @@
     <br>
     <br>
     <div class="">
-      <img src="./img/dan.png" alt="dan's face yo!">
+      <img src="./img/04a.gif" alt="dan's face yo!">
     </div>
 
+    <section>
+      <h1>Current temperature: <span id="current-temperature"></span></h1>
+      <select id="current-city">
+        <option value="london">London</option>
+        <option value="newyork">New York</option>
+        <option value="paris">Paris</option>
+        <option value="tokyo">Tokyo</option>
+      </select>
+    </section>
 
 
-  </body>
+
+  </body></center>
 </html>
