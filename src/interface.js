@@ -1,35 +1,34 @@
 $(document).ready(function() {
   var thermostat = new Thermostat();
   updateTemperature();
-  $( '#psm_mode' ).text('On');
+  $('#psm_mode').text('On').css('color', 'green');
 
-$('#temp_up').click(function() { 
+$('#temp_up').click(function() {
   thermostat.up();
   updateTemperature();
 });
 
-$('#temp_down').click(function() { 
+$('#temp_down').click(function() {
   thermostat.down();
   updateTemperature();
 });
 
-$('#reset').click(function() { 
+$('#reset').click(function() {
   thermostat.resetTemperature();
   updateTemperature();
 });
 
-$('#psm_on').click(function() { 
+$('#psm_on').click(function() {
   thermostat.powerSavingModeOn();
   updateTemperature();
-  $( '#psm_mode' ).text('On');
+  $( '#psm_mode' ).text('On').css('color', 'green');
 });
 
-$('#psm_off').click(function() { 
+$('#psm_off').click(function() {
   thermostat.powerSavingModeOff();
   updateTemperature();
-  $( '#psm_mode' ).text('Off');
+  $( '#psm_mode' ).text('Off').css('color','red');
 });
-
 
 function updateTemperature(){
   $('#temperature').text(thermostat.temperature);
@@ -41,7 +40,20 @@ function updateTemperature(){
   }
    else {
     $('#temperature').css('color','red');
-  };
-};
+  }
+}
+// jQuery toggle plugin for slider
+// jQuery.fn.clickToggle = function(a,b) {
+//   var ab = [b,a];
+//   return this.on("click", function(){ ab[this._tog^=1].call(this); });
+// };
+//
+// $('#psm_toggle').clickToggle(function(){
+//   thermostat.powerSavingModeOn();
+//   updateTemperature();
+// }, function() {
+//   thermostat.powerSavingModeOff();
+//   updateTemperature();
+// });
 
 });
