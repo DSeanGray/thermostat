@@ -1,30 +1,47 @@
 $(document).ready(function() {
   var thermostat = new Thermostat();
-$('#temperature').text(thermostat.temperature);
+  updateTemperature();
+  $( '#psm_mode' ).text('On');
 
-$('#temp_up').click(function() { // this is an alternate version of .on('click'), with a sprinkle of jQuery syntactic sugar
+$('#temp_up').click(function() { 
   thermostat.up();
-  $('#temperature').text(thermostat.temperature);
+  updateTemperature();
 });
 
-$('#temp_down').click(function() { // this is an alternate version of .on('click'), with a sprinkle of jQuery syntactic sugar
+$('#temp_down').click(function() { 
   thermostat.down();
-  $('#temperature').text(thermostat.temperature);
+  updateTemperature();
 });
 
-$('#reset').click(function() { // this is an alternate version of .on('click'), with a sprinkle of jQuery syntactic sugar
+$('#reset').click(function() { 
   thermostat.resetTemperature();
-  $('#temperature').text(thermostat.temperature);
+  updateTemperature();
 });
 
-$('#psm_on').click(function() { // this is an alternate version of .on('click'), with a sprinkle of jQuery syntactic sugar
+$('#psm_on').click(function() { 
   thermostat.powerSavingModeOn();
-  $('#temperature').text(thermostat.temperature);
+  updateTemperature();
+  $( '#psm_mode' ).text('On');
 });
 
-$('#psm_off').click(function() { // this is an alternate version of .on('click'), with a sprinkle of jQuery syntactic sugar
+$('#psm_off').click(function() { 
   thermostat.powerSavingModeOff();
-  $('#temperature').text(thermostat.temperature);
+  updateTemperature();
+  $( '#psm_mode' ).text('Off');
 });
+
+
+function updateTemperature(){
+  $('#temperature').text(thermostat.temperature);
+  if (thermostat.energyUse() === 'low-usage'){
+    $('#temperature').css('color','green');
+  }
+  else if (thermostat.energyUse() === 'medium-usage'){
+    $('#temperature').css('color','black');
+  }
+   else {
+    $('#temperature').css('color','red');
+  };
+};
 
 });

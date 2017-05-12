@@ -54,7 +54,7 @@ Thermostat.prototype.energyUse = function() {
   if(this.temperature < this.mediumEnergy) {
     return 'low-usage';
   }
-  if(this.temperature > this.MAX_TEMP_PS) {
+  if(this.temperature >= this.MAX_TEMP_PS) {
     return 'high-usage';
   }
   return 'medium-usage';
